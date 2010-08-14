@@ -19,7 +19,7 @@ class ThreadPostsController < ApplicationController
   def create
     @thread_post = ThreadPost.new(params[:thread_post])
 
-    if File.exist?("/opt/adobe/fms/applications/test/streams/recordings/#{params[:voice_file_name]}.swf")
+    if Rails.env == "development" or File.exist?("/opt/adobe/fms/applications/test/streams/recordings/#{params[:voice_file_name]}.swf")
       @thread_post.media_filename = params[:voice_file_name]
     end
 

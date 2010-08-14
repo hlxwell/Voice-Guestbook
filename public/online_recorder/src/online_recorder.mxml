@@ -20,7 +20,7 @@
 	  nc.addEventListener(NetStatusEvent.NET_STATUS,checkConnect);
 	  //这是连接的地址其实就是在你FMS的安装目录里,Applications下新建一个vid2的文件夹,这个文件夹可以看成是你的工程名了
 	  //至于后面的recordings是你录制视频时存放视频的文件夹
-	  rtmpNow="rtmp://211.138.113.63/test/recordings";
+	  rtmpNow="rtmp://211.138.113.63/voice_guestbook";
 	  //开始连接
 	  nc.connect(rtmpNow);
 	  addMedia();
@@ -66,17 +66,17 @@
 	  //获取系统的microphone
 	  mic=Microphone.getMicrophone();
 	  //让videoDisplay加载摄像头
-	  vv.attachCamera(cam);
+	  video.attachCamera(cam);
 	  msgError.text="initnize";
 	}
 ]]>
 </mx:Script>
 
 <mx:VBox id="myVb" width="100%" horizontalAlign="center">
-	<mx:VideoDisplay id="vv" width="400" height="300"/>
+	<mx:VideoDisplay id="video" width="400" height="300"/>
 	<mx:HBox>
-		<mx:Button label="record" id="btn" click="startRecord(event);"/>
-		<mx:Button label="play" id="stopbtn" click="stop(event);"/>
+		<mx:Button label="Start Record" id="btn" click="startRecord(event);"/>
+		<mx:Button label="Stop Recording" id="stopbtn" click="stop(event);"/>
 		<mx:TextInput id="msgError"/>
 	</mx:HBox>
 </mx:VBox>

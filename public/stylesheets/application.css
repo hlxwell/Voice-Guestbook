@@ -361,7 +361,9 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 .post-meta a {color: #345; }
 .post-meta a:hover {color: #001;}
 
-.post-body {font-size: 1.1em;}
+.post-media { font-weight: bold; }
+
+.post-body { padding-top: 10px; font-size: 1.1em;}
 .post-body a {color: #039;}
 .post-body a:hover {color: #039;}
 

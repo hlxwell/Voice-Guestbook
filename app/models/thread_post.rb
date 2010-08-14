@@ -1,5 +1,5 @@
 class ThreadPost < ActiveRecord::Base
-  attr_accessible :title, :content, :voice_file_path, :user_id, :parent_id
+  attr_accessible :title, :content, :voice_file_path, :user_id, :parent_id, :media_filename
 
   scope :parent_post, where(:parent_id => nil)
   scope :recent, where(:parent_id => nil).order("updated_at desc")
