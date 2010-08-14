@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="horizontal" paddingTop="5" paddingLeft="5" paddingRight="5" paddingBottom="5" backgroundColor="#ffffff" creationComplete="initApp();">
+<mx:Script>
+<![CDATA[
+	import mx.messaging.errors.NoChannelAvailableError;
+	private var nc:NetConnection;
+	private var ns:NetStream;
+	private var rtmpNow:String;
+	private var msg:Boolean;
+	private var metaSniffer:Object;
+	private var dur:Number;
+	private var cam:Camera;
+	private var mic:Microphone;
+	private var vid1:Video;
+	
+	private function initApp():void{
+	  //初始化一个网络连接
+	  nc=new NetConnection();
+	  //为这个连接添加事件,这个事件有返回连接状态
+	  nc.addEventListener(NetStatusEvent.NET_STATUS,checkConnect);
+	  //这是连接的地址其实就是在你FMS的安装目录里,Applications下新建一个vid2的文件夹,这个文件夹可以看成是你的工程名了
+	  //至于后面的recordings是你录制视频时存放视频的文件夹
+	  rtmpNow="rtmp://211.138.113.63/test/recordings";
+	  //开始连接
+	  nc.connect(rtmpNow);
+	  addMedia();
+	}
+	
+	private function checkConnect(event:NetStatusEvent):void{
+	  //根据连接返回的状态信息判断是滞连接成功
+	  msg=(event.info.code=="NetConnection.Connect.Success");
+	  msgError.text=event.info.code;
+	  if(msg){
+	    //如果成功,就利用些连接建立一个流,为以后的录制传输数据
+	    ns=new NetStream(nc);
+	    msgError.text="establish netStream";
+	  }
+	}
+	
+	private function startRecord(e:Event):void{
+	  if(ns){
+	    msgError.text="start record";
+	    //开始录制时要加载micphone和摄像头
+	    ns.attachAudio(mic);
+	    ns.attachCamera(cam);
+	    //这里是关键,从这里开始,就开始录制了,input.text是录制的视频文件的名称
+	    ns.publish(Application.application.parameters.fileName, "record");
+	  }
+	}
+	
+	private function stop(event:Event):void{
+	  //和JAVA里类似,流类的东西一定要记得关闭
+	  ns.play(false);
+	  ns.close();
+	  msgError.text="stop";
+	}
+	
+	private function addMedia ():void
+	{
+	  //获取系统的摄像头
+	  cam=Camera.getCamera();
+	  //设定宽,高,以及帧
+	  cam.setMode (240,180,24);
+	  //设定画面质量
+	  cam.setQuality (0,90);
+	  //获取系统的microphone
+	  mic=Microphone.getMicrophone();
+	  //让videoDisplay加载摄像头
+	  vv.attachCamera(cam);
+	  msgError.text="initnize";
+	}
+]]>
+</mx:Script>
+
+<mx:VBox id="myVb" width="100%" horizontalAlign="center">
+	<mx:VideoDisplay id="vv" width="400" height="300"/>
+	<mx:HBox>
+		<mx:Button label="record" id="btn" click="startRecord(event);"/>
+		<mx:Button label="play" id="stopbtn" click="stop(event);"/>
+		<mx:TextInput id="msgError"/>
+	</mx:HBox>
+</mx:VBox>
+</mx:Application>

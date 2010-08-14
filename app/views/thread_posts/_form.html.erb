@@ -16,6 +16,35 @@
     <%= f.hidden_field :parent_id, :value => params[:reply_on] %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
+    <!-- voice_file_name -->
+    <%= hidden_field_tag :voice_file_name, @voice_file_name %>
+
+    <div class="form-row">
+      <div class="form-property"><%= f.label "Record" %></div>
+			<div class="form-value">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+             id="FlashVars" width="540" height="400"
+             codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+          <param name="movie" value="/online_recorder/bin/online_recorder.swf" />
+          <param name="quality" value="high" />
+          <param name="bgcolor" value="#ffffff" />
+          <param name="allowScriptAccess" value="sameDomain" />
+          <param name="flashvars" value="fileName=<%= @voice_file_name %>" />
+          <embed src="/online_recorder/bin/online_recorder.swf" quality="high" bgcolor="#ffffff"
+             width="540" height="400" name="FlashVars" align="middle"
+             play="true"
+             loop="false"
+             quality="high"
+             allowScriptAccess="sameDomain"
+             type="application/x-shockwave-flash"
+             pluginspage="http://www.adobe.com/go/getflashplayer"
+             flashvars="fileName=<%= @voice_file_name %>" >
+          </embed>
+        </object>
+      </div>
+      <div class="clearer">&nbsp;</div>
+    </div>
+
 		<div class="form-row form-row-submit">
 		  <%= f.submit :class => "button" %>
 		</div>

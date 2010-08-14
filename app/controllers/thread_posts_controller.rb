@@ -1,6 +1,6 @@
 class ThreadPostsController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
-  
+
   def index
     # @thread_posts = ThreadPost.parent_post.all
     @thread_posts = ThreadPost.parent_post.paginate :page => params[:page], :per_page => 10
@@ -13,10 +13,16 @@ class ThreadPostsController < ApplicationController
 
   def new
     @thread_post = ThreadPost.new
+    @voice_file_name = "voice_file_#{Time.now.to_i}_#{rand(10000)}"
   end
 
   def create
     @thread_post = ThreadPost.new(params[:thread_post])
+
+    if File.exist?("/opt/adobe/fms/applications/test/streams/recordings/#{params[:voice_file_name]}.swf")
+      @thread_post.media_filename = params[:voice_file_name]
+    end
+
     if @thread_post.save
       flash[:notice] = "Successfully created thread post."
       redirect_to @thread_post.parent.nil? ? @thread_post : @thread_post.parent
