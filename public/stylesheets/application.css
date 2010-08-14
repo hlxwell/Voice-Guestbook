@@ -551,9 +551,9 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 	line-height: 2em;
 	padding-bottom: 2px;
 }
-#main-nav li.current-tab a {color: #333;}
+#main-nav li.current-tab a, #main-nav li.highlighted a {color: #333;}
 #main-nav a:hover {color: #002;}
-#main-nav li.current-tab a {border-bottom: 2px solid #94CC5F;}
+#main-nav li.current-tab a, #main-nav li.highlighted a {border-bottom: 2px solid #94CC5F;}
 
 
 /* Subnav */
@@ -566,7 +566,7 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 	text-decoration: none;
 }
 #sub-nav li {margin: 0 1em;}
-#sub-nav li.current-tab a {font-weight: bold;}
+#sub-nav li.current-tab a, #sub-nav li.highlighted a{font-weight: bold;}
 
 
 /* Main */
