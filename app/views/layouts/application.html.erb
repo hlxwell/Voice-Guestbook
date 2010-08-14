@@ -24,7 +24,7 @@
 
         <% if current_user %>
           <%= n.item current_user.email, :link => edit_user_path(:current) %>
-          <%= n.item 'logout', :link => signout_path, :method => :destroy %>
+          <%= n.item 'logout', :link => signout_path, :link_html => {:method => :destroy} %>
         <% else %>
           <%= n.item 'Sign Up', :link => signup_path %>
           <%= n.item 'Sign In', :link => signin_path %>
