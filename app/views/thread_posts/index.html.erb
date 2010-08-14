@@ -5,8 +5,7 @@
 <div class="clearer">&nbsp;</div>
 
 <div class="archive-pagination archive-pagination-top">
-	<div class="left"><a href="#">&#171; Previous page</a></div>
-	<div class="right"><a href="#">Next page &#187;</a></div>
+	<div class="right"><%= will_paginate @thread_posts %></div>
 	<div class="clearer">&nbsp;</div>
 </div>
 
@@ -23,11 +22,13 @@
 	<div class="clearer">&nbsp;</div>
 </div>
 
-<div class="archive-separator"></div>
+<% if thread_post.id != @thread_posts.last.id %>
+  <div class="archive-separator"></div>
+<% end %>
+
 <% end %>
 
 <div class="archive-pagination archive-pagination-bottom">
-	<div class="left"><a href="#">&#171; Previous page</a></div>
-	<div class="right"><a href="#">Next page &#187;</a></div>
+	<div class="right"><%= will_paginate @thread_posts %></div>
 	<div class="clearer">&nbsp;</div>
 </div>

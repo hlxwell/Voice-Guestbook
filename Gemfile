@@ -5,6 +5,8 @@ gem 'rails', '3.0.0.rc'
 gem 'nifty-generators'
 gem "authlogic", :git => "http://github.com/binarylogic/authlogic.git"
 gem "tabletastic"
+gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem "will_paginate", "~> 3.0.pre2"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,6 +22,8 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem 'paperclip'
 
 # Bundle the extra gems:
 # gem 'bj'

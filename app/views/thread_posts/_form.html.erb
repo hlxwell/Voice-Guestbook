@@ -9,7 +9,7 @@
 
 		<div class="form-row">
 			<div class="form-property"><%= f.label :content %></div>
-			<div class="form-value"><%= f.text_area :content %></div>
+			<div class="form-value"><%= f.cktext_area(:content, :width => '530px', :height => '300px', :toolbar=>'Basic') %></div>
 			<div class="clearer">&nbsp;</div>
 		</div>
 

@@ -1,0 +1,42 @@
+<div class="right sidebar" id="sidebar">
+
+	<div class="section">
+		<div class="section-title">Search</div>
+		<div class="section-content">
+			<form method="post" action="">
+				<input type="text" class="text" size="28" /> &nbsp; <input type="submit" class="button" value="Submit" />
+			</form>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-title">Recent Posts</div>
+		<div class="section-content">
+
+			<ul class="nice-list">
+			  <% ThreadPost.recent.all.each do |post| %>
+				<li>
+					<div class="left"><a href="#"><%= post.title %></a></div>
+					<div class="right"><%= post.updated_at.to_s(:short) %></div>
+					<div class="clearer">&nbsp;</div>
+				</li>
+        <% end %>
+
+				<li><a href="#" class="more">Browse Archives &#187;</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="section">
+		<div class="section-title">All of Members</div>
+		<div class="section-content">
+			<ul class="nice-list">
+			  <% User.limit(10).all.each do |user| %>
+				<li><%= user.login %> <span class="quiet">- <%= user.created_at.to_s(:short) %></span></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="clearer">&nbsp;</div>

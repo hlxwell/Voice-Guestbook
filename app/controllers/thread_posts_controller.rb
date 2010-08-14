@@ -2,7 +2,8 @@ class ThreadPostsController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
   
   def index
-    @thread_posts = ThreadPost.parent_post.all
+    # @thread_posts = ThreadPost.parent_post.all
+    @thread_posts = ThreadPost.parent_post.paginate :page => params[:page], :per_page => 10
   end
 
   def show

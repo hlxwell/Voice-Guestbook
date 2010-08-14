@@ -6,7 +6,7 @@
     <div class="post">
     	<div class="post-title"><h1><%= @thread_post.title %></h1></div>
     	<div class="post-date"><%= @thread_post.created_at.to_s(:db) %> by <%= @thread_post.user.login %></div>
-    	<div class="post-body"><%= @thread_post.content %></div>
+    	<div class="post-body"><%= raw @thread_post.content %></div>
     </div>
     <div class="archive-separator"></div>
 
@@ -14,7 +14,7 @@
     <div class="post">
     	<div class="post-title"><h1><%= post.title %></h1></div>
     	<div class="post-date"><%= post.created_at.to_s(:db) %> by <%= post.user.login %></div>
-    	<div class="post-body"><%= post.content %></div>
+    	<div class="post-body"><%= raw post.content %></div>
     </div>
     <div class="archive-separator"></div>
     <% end %>
