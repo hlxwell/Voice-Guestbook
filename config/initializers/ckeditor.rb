@@ -1,5 +1,3 @@
-VoiceGuestbook::Application.config.autoload_paths += %W( #{RAILS_ROOT}/app/models/ckeditor )
-
 # Use this hook to configure ckeditor
 if Object.const_defined?("Ckeditor")
   Ckeditor.setup do |config|
