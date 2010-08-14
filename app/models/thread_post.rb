@@ -1,0 +1,12 @@
+class ThreadPost < ActiveRecord::Base
+  attr_accessible :title, :content, :voice_file_path, :user_id, :parent_id
+
+  scope :parent_post, where(:parent_id => nil)
+
+  belongs_to :user
+  belongs_to :parent, :class_name => "ThreadPost"
+  has_many :children, :class_name => "ThreadPost", :foreign_key => "parent_id"
+
+  validates_presence_of :title, :if => Proc.new {|p| p.parent_id.blank? }
+  validates_presence_of :user_id
+end

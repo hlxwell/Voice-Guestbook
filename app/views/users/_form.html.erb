@@ -1,0 +1,32 @@
+<%= form_for(@user) do |f| %>
+  <%= f.error_messages :class => "error" %>
+	<fieldset>
+		<div class="form-row">
+			<div class="form-property"><%= f.label :login %></div>
+			<div class="form-value"><%= f.text_field :login, :class => "text" %></div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-property"><%= f.label :email %></div>
+			<div class="form-value"><%= f.text_field :email, :class => "text" %></div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-property"><%= f.label :password %></div>
+			<div class="form-value"><%= f.password_field :password, :class => "text" %></div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-property"><%= f.label :password_confirmation %></div>
+			<div class="form-value"><%= f.password_field :password_confirmation, :class => "text" %></div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
+		<div class="form-row form-row-submit">
+		  <%= f.submit :class => "button" %>
+		</div>
+	</fieldset>
+<% end %>

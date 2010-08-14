@@ -1,0 +1,33 @@
+<% title "Thread Posts" %>
+
+<h1>All Posts</h1>
+
+<div class="clearer">&nbsp;</div>
+
+<div class="archive-pagination archive-pagination-top">
+	<div class="left"><a href="#">&#171; Previous page</a></div>
+	<div class="right"><a href="#">Next page &#187;</a></div>
+	<div class="clearer">&nbsp;</div>
+</div>
+
+<% for thread_post in @thread_posts %>
+<div class="post">
+	<div class="archive-post-date">
+		<img src="/images/sample-gravatar.gif" height="40" width="40" alt="" />
+	</div>
+
+	<div class="archive-post-title">
+		<h3><%= link_to thread_post.title, thread_post %></h3>
+		<div class="post-date"><%= thread_post.created_at.to_s(:db) %></div>
+	</div>
+	<div class="clearer">&nbsp;</div>
+</div>
+
+<div class="archive-separator"></div>
+<% end %>
+
+<div class="archive-pagination archive-pagination-bottom">
+	<div class="left"><a href="#">&#171; Previous page</a></div>
+	<div class="right"><a href="#">Next page &#187;</a></div>
+	<div class="clearer">&nbsp;</div>
+</div>

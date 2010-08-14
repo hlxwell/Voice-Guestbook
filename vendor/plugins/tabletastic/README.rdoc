@@ -1,0 +1,311 @@
+= Tabletastic
+
+Inspired by the projects table_builder and formtastic,
+I realized how often I created tables for my active record collections.
+This is my attempt to simplify this (the default scaffold):
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Author Id</th>
+    </tr>
+    <% for post in @posts %>
+      <tr>
+        <td><%=h post.title %></td>
+        <td><%=h post.body %></td>
+        <td><%=h post.author_id %></td>
+        <td><%= link_to "Show", post %></td>
+        <td><%= link_to "Edit", edit_post_path(post) %></td>
+        <td><%= link_to "Destroy", post, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+    <% end %>
+  </table>
+
+into this:
+
+  <%= table_for(@posts) do |t|
+        t.data :actions => :all
+      end %>
+
+and still output the same effective results, but with all the semantic
+goodness that tabular data should have, i.e. a +thead+ and +tbody+ element.
+
+
+== NOTICE: Rails 3 only!
+
+As of version 0.2.0, this project is <b>no longer compatible with Rails 2</b>.
+To use, make sure you're using the latest release of Rails 3.
+
+Also, the new Rails 3 idiom is for blocks in erb templates to be use <code><%= %></code>, so if you're
+upgrading, you MUST now use the <code><%= %></code> erb helpers when you call +table_for+.
+
+For example:
+
+  <%= table_for(@people) do |t|
+        t.data
+      end %>
+
+The following would also be valid:
+
+  <%= table_for(@people) do |t| %>
+    <%= t.data %>
+  <% end %>
+
+Or in HAML:
+
+  = table_for(@people) do |t|
+    = t.data
+
+But, following the block helper conventions, the following would NOT be okay
+
+  <!-- Don't do this! -->
+  <%= table_for(@people) do |t| %>
+    <% t.data %>
+  <% end %>
+
+Or, in HAML:
+
+  -# Don't do this!
+  = table_for(@people) do |t|
+    - t.data
+
+This is because the +data+ method has output, and can optionally be called with a block.
+
+For more information about Rails 3 and Block helpers and the new conventions, check out {the Railscasts episode about ERB blocks}[http://railscasts.com/episodes/208-erb-blocks-in-rails-3]
+
+== Installation
+
+In your Rails project, Gemfile:
+  gem "tabletastic"
+
+Or, for if you're behind the times, as a plugin:
+  script/plugin install git://github.com/jgdavey/tabletastic.git
+
+Optionally, you can create an initializer at config/initializers/tabletastic.rb with the following:
+  Tabletastic.default_table_block = lambda {|table| table.data :actions => :all }
+
+== Usage
+
+By default, you can just use the table_for method to build up your table.
+Assuming you have a Post model with title and body, that belongs to an Author model with a name,
+you can just use the helper. It will try to detect all content fields and belongs to associations.
+
+In your view, simply calling:
+
+  <%= table_for(@posts) do |t|
+        t.data
+      end %>
+
+will produce html like this:
+
+  <table id="posts">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="post odd" id="post_1">
+        <td>Something</td>
+        <td>Lorem ipsum dolor sit amet consequat. Duis aute irure dolor.</td>
+        <td>Jim Beam</td>
+      </tr>
+      <tr class="post even" id="post_2">
+        <td>Second Post</td>
+        <td>This is the second post</td>
+        <td>Jack Daniels</td>
+      </tr>
+      <tr class="post odd" id="post_3">
+        <td>Something else</td>
+        <td>Blah!</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+To limit the fields, change the order, or to include fields that are excluded by default (such as created_at),
+You can list methods to call on each resource:
+
+  <%= table_for(@posts) do |t|
+    t.data :author, :title, :created_at
+  end %>
+
+will produce html like:
+
+  <table id="posts">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Created at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="post_1" class="post odd">
+        <td>Jim Beam</td>
+        <td>Something</td>
+        <td>2009-11-15 02:42:48 UTC</td>
+      </tr>
+      <tr id="post_2" class="post even">
+        <td>Jack Daniels</td>
+        <td>Second Post</td>
+        <td>2009-11-16 00:11:00 UTC</td>
+      </tr>
+      <tr id="post_3" class="post odd">
+        <td></td>
+        <td>Something else</td>
+        <td>2009-11-16 00:11:30 UTC</td>
+      </tr>
+    </tbody>
+  </table>
+
+For even greater flexibility, you can pass +data+ a block:
+
+  <%= table_for(@posts) do |t|
+    t.data :actions => :all do
+      t.cell(:title, :cell_html => {:class => "titlestring"})
+      t.cell(:body, :heading => "Content") {|p| truncate(p.body, 30)}
+      t.cell(:author) {|p| p.author && link_to(p.author.name, p.author) }
+    end
+  end %>
+
+will product html like:
+
+  <table id="posts">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="post odd" id="post_1">
+        <td class="titlestring">Something</td>
+        <td>Lorem ipsum dolor sit amet,...</td>
+        <td>
+          <a href="/authors/1">Jim Bean</a>
+        </td>
+        <td class="actions show_link">
+          <a href="/posts/1">Show</a>
+        </td>
+        <td class="actions edit_link">
+          <a href="/posts/1/edit">Edit</a>
+        </td>
+        <td class="actions destroy_link">
+          <a href="/posts/1/edit">Destroy</a> <!-- inline javascript omitted -->
+        </td>
+      </tr>
+      <tr class="post even" id="post_2">
+        <td class="titlestring">Second Post</td>
+        <td>This is the second post</td>
+        <td>
+          <a href="/authors/2">Jack Daniels</a>
+        </td>
+        <td class="actions show_link">
+          <a href="/posts/2">Show</a>
+        </td>
+        <td class="actions edit_link">
+          <a href="/posts/2/edit">Edit</a>
+        </td>
+        <td class="actions destroy_link">
+          <a href="/posts/2/edit">Destroy</a> <!-- inline javascript omitted -->
+        </td>
+      </tr>
+      <tr class="post odd" id="post_3">
+        <td class="titlestring">Something else</td>
+        <td>Blah!</td>
+        <td></td>
+        <td class="actions show_link">
+          <a href="/posts/3">Show</a>
+        </td>
+        <td class="actions edit_link">
+          <a href="/posts/3/edit">Edit</a>
+        </td>
+        <td class="actions destroy_link">
+          <a href="/posts/3/edit">Destroy</a> <!-- inline javascript omitted -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+If it _still_ isn't flexible enough for your needs, it might be time to return to static html/erb.
+
+== Default Options and Tabletastic initializer
+
+As of version 0.2.0, you can now setup some of your own defaults in an initializer file.
+
+For example, create a file called tabletastic.rb in your config/initializers folder.
+
+Within that file, there are several defaults that you can setup for yourself, including:
+
+  Tabletastic.default_table_html
+  Tabletastic.default_table_block
+
+Both of these options are setup up so that inline options will still override whatever they are set to,
+but providing them here will save you some code if you commonly reuse options.
+
+By default, +default_table_html+ is simple an empty hash <code>{}</code>. By providing your own defaults, you can ensure that all
+of your tables have a specific html +class+ or +cellspacing+, or whatever.
+
+If <code>Tabletastic.default_table_html</code> is set to <code>{:cellspacing => 0, :class => 'yowza'}</code>,
+then all tabletastic tables will have this html by default, unless overridden:
+
+  table_for(@posts) do |t|  # body of block removed for brevity
+
+will produce:
+
+  <table class="yowza" cellspacing="0" id="posts">
+
+Similarly, all of those calls to +table_for+ can get boring since you might be using the same block every time.
+The option +default_table_block+ lets you set a default lambda so that you can omit the block with +table_for+.
+Since by default +default_table_block+ is set to <code>lambda{|table| table.data}</code>, the following:
+
+  <%= table_for(@posts) %>
+
+will be the same as
+
+  <%= table_for(@posts) do |t|
+        t.data
+      end %>
+
+However, just like +default_table_html+ , you can set a different block in the initializer file for your block to default to.
+
+For example:
+
+  Tabletastic.default_table_block = lambda {|table| table.data :actions => :all }
+
+will make the following equivalent:
+
+  <%= table_for(@posts) %>
+
+  <%= table_for(@posts) do |t|
+        t.data :actions => :all
+      end %>
+
+And to omit those action links, you can just use +table_for+ the old-fashioned way:
+
+  <%= table_for(@posts) do |t|
+        t.data
+      end %>
+
+== Note on Patches/Pull Requests
+
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a future version unintentionally.
+* Commit, do not mess with rakefile, version, or changelog.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+== Copyright
+
+Copyright (c) 2010 Joshua Davey. See LICENSE for details.

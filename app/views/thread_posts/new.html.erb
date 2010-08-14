@@ -1,0 +1,4 @@
+<% title "New Thread Post" %>
+<h1><%= params[:reply_on].blank? ? "New post" : "Reply for thread ##{params[:reply_on]}" %></h1>
+
+<%= render 'form' %>

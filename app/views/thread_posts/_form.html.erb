@@ -1,0 +1,25 @@
+<%= form_for @thread_post, :html => {:id => "commentform"} do |f| %>
+  <%= f.error_messages :class => "error" %>
+	<fieldset>
+		<div class="form-row">
+			<div class="form-property required"><%= f.label :title %></div>
+			<div class="form-value"><%= f.text_field :title, :class => "text" %></div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-property"><%= f.label :content %></div>
+			<div class="form-value"><%= f.text_area :content %></div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
+    <%= f.hidden_field :parent_id, :value => params[:reply_on] %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+		<div class="form-row form-row-submit">
+		  <%= f.submit :class => "button" %>
+		</div>
+	</fieldset>
+<% end %>
+
+<div class="clearer">&nbsp;</div>
