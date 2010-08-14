@@ -1,7 +1,7 @@
 # require 'capistrano/ext/multistage'
 
 set :application, "voice_guestbook"
-set :repository,  "git@github.com:hlxwell/voice_guestbook.git"
+set :repository,  "git@github.com:hlxwell/Voice-Guestbook.git"
 set :branch, ENV["BRANCH"] || "master"
 set :deploy_to, "/home/hlx/www/voice_guestbook/"
 set :user, "hlx"
