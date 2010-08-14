@@ -7,6 +7,7 @@ gem "authlogic", :git => "http://github.com/binarylogic/authlogic.git"
 gem "tabletastic"
 gem 'ckeditor', :git => 'http://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 gem "will_paginate", "~> 3.0.pre2"
+gem 'navigasmic'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

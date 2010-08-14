@@ -61,6 +61,7 @@ GEM
       treetop (>= 1.4.5)
     mime-types (1.16)
     mysql (2.8.1)
+    navigasmic (0.4.1)
     net-scp (1.0.2)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.4)
@@ -107,6 +108,7 @@ DEPENDENCIES
   capistrano
   ckeditor!
   mysql
+  navigasmic
   nifty-generators
   paperclip
   rails (= 3.0.0.rc)

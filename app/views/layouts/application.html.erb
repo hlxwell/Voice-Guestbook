@@ -17,47 +17,26 @@
 <div id="site-wrapper">
 
   <div id="header">
-
-    <!-- <div id="top">
-      <div class="left" id="logo">
-        <a href="index.html"><img src="/images/logo.gif" alt="" /></a>
-      </div>
-
-      <div class="left navigation" id="main-nav">
-        <ul class="tabbed">
-          <li class="current-tab"><a href="index.html">Blog</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Archives</a></li>
-          <li><a href="#">Join Us!</a></li>
-        </ul>
-        <div class="clearer">&nbsp;</div>
-      </div>
-      <div class="clearer">&nbsp;</div>
-    </div> -->
-
     <div class="navigation" id="sub-nav">
+      <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
+        <%= n.item 'All Posts', :link => "/" %>
+        <%= n.item 'New Post', :link => "/thread_posts/new" %>
 
-      <ul class="tabbed">
-        <li><%= link_to "All Posts", thread_posts_path %></li>
-        <li><%= link_to "New Post", new_thread_post_path %></li>
-      <% if current_user %>
-        <li class="current-tab"><%= link_to current_user.email, edit_user_path(:current) %></li>
-        <li><%= link_to "logout", signout_path, :method => :destroy %></li>
-      <% else %>
-        <%= link_to "register", signup_path %></li>
-        <li><%= link_to "login", signin_path %></li>
+        <% if current_user %>
+          <%= n.item current_user.email, :link => edit_user_path(:current) %>
+          <%= n.item 'logout', :link => signout_path, :method => :destroy %>
+        <% else %>
+          <%= n.item 'Sign Up', :link => signup_path %>
+          <%= n.item 'Sign In', :link => signin_path %>
+        <% end %>
       <% end %>
-			</ul>
-
 			<div class="clearer">&nbsp;</div>
-
 		</div>
 
   </div>
 
   <!-- ### mail section ### -->
-	<div class="main" id="main-two-columns">	  
+	<div class="main" id="main-two-columns">
     <!-- ### left main content section -->
 		<div class="left" id="main-content">
 		  <%= yield %>

@@ -1,16 +1,16 @@
 <div class="right sidebar" id="sidebar">
 
-	<div class="section">
-		<div class="section-title">Search</div>
-		<div class="section-content">
-			<form method="post" action="">
-				<input type="text" class="text" size="28" /> &nbsp; <input type="submit" class="button" value="Submit" />
-			</form>
-		</div>
-	</div>
+  <!-- <div class="section">
+    <div class="section-title">Search</div>
+    <div class="section-content">
+      <form method="post" action="">
+        <input type="text" class="text" size="28" /> &nbsp; <input type="submit" class="button" value="Submit" />
+      </form>
+    </div>
+  </div> -->
 
 	<div class="section">
-		<div class="section-title">Recent Posts</div>
+		<div class="section-title">Recent Updated Posts</div>
 		<div class="section-content">
 
 			<ul class="nice-list">
@@ -22,13 +22,13 @@
 				</li>
         <% end %>
 
-				<li><a href="#" class="more">Browse Archives &#187;</a></li>
+				<li><a href="/" class="more">Browse Posts &#187;</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="section">
-		<div class="section-title">All of Members</div>
+		<div class="section-title">Latest Members</div>
 		<div class="section-content">
 			<ul class="nice-list">
 			  <% User.limit(10).all.each do |user| %>
