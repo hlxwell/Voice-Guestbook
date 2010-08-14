@@ -20,6 +20,7 @@ role :db,  "bbs.hzva.org", :primary => true        # This is where Rails migrati
 namespace :deploy do
   task :init_project do
     run "cd #{release_path}; /home/hlx/.rvm/gems/ree-1.8.7-2010.01/bin/bundle install"
+    run "ln -s #{shared_path}/ckeditor_assets #{release_path}/public/ckeditor_assets"
   end
 
   task :start do ; end
