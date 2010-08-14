@@ -2,6 +2,8 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="horizontal" paddingTop="5" paddingLeft="5" paddingRight="5" paddingBottom="5" backgroundColor="#ffffff" creationComplete="initApp();">
 <mx:Script>
 <![CDATA[
+	import mx.events.CloseEvent;
+	import mx.controls.Alert;
 	import mx.messaging.errors.NoChannelAvailableError;
 	private var nc:NetConnection;
 	private var ns:NetStream;
@@ -11,10 +13,16 @@
 	private var dur:Number;
 	private var cam:Camera;
 	private var mic:Microphone;
-	private var vid1:Video;
+	private var onlySound:Boolean;
 	
-	private function initApp():void{
-	  //初始化一个网络连接
+	private function decideRecordVideo(e:CloseEvent):void {
+	  if (e.detail==Alert.YES) {
+      	onlySound = false;
+      } else {
+      	onlySound = true;
+      }
+
+      //初始化一个网络连接
 	  nc=new NetConnection();
 	  //为这个连接添加事件,这个事件有返回连接状态
 	  nc.addEventListener(NetStatusEvent.NET_STATUS,checkConnect);
@@ -25,6 +33,15 @@
 	  nc.connect(rtmpNow);
 	  addMedia();
 	}
+	private function initApp():void{
+	  mx.controls.Alert.show(
+	  	"Do you want to record video?", 
+	  	"Question", 
+	  	mx.controls.Alert.YES|mx.controls.Alert.NO,
+	  	this,
+	  	decideRecordVideo, null, Alert.YES
+	  );
+	}
 	
 	private function checkConnect(event:NetStatusEvent):void{
 	  //根据连接返回的状态信息判断是滞连接成功
@@ -33,41 +50,49 @@
 	  if(msg){
 	    //如果成功,就利用些连接建立一个流,为以后的录制传输数据
 	    ns=new NetStream(nc);
-	    msgError.text="establish netStream";
+	    msgError.text="Connected!";
 	  }
 	}
 	
 	private function startRecord(e:Event):void{
 	  if(ns){
-	    msgError.text="start record";
+	    msgError.text="Recording...";
 	    //开始录制时要加载micphone和摄像头
 	    ns.attachAudio(mic);
 	    ns.attachCamera(cam);
 	    //这里是关键,从这里开始,就开始录制了,input.text是录制的视频文件的名称
 	    ns.publish(Application.application.parameters.fileName, "record");
+	    this.startbtn.enabled = false;
+	    this.stopbtn.enabled = true;
 	  }
 	}
 	
-	private function stop(event:Event):void{
+	private function stopRecord(event:Event):void{
 	  //和JAVA里类似,流类的东西一定要记得关闭
 	  ns.play(false);
 	  ns.close();
-	  msgError.text="stop";
+	  msgError.text="Click to rerecord.";
+	  this.startbtn.enabled = true;
+	  this.stopbtn.enabled = false;
 	}
 	
 	private function addMedia ():void
 	{
-	  //获取系统的摄像头
-	  cam=Camera.getCamera();
-	  //设定宽,高,以及帧
-	  cam.setMode (240,180,24);
-	  //设定画面质量
-	  cam.setQuality (0,90);
 	  //获取系统的microphone
 	  mic=Microphone.getMicrophone();
-	  //让videoDisplay加载摄像头
-	  video.attachCamera(cam);
-	  msgError.text="initnize";
+	  
+	  if(!this.onlySound) {
+	  	//获取系统的摄像头
+	  	cam=Camera.getCamera();
+	  	//设定宽,高,以及帧
+	  	cam.setMode (240,180,24);
+	  	//设定画面质量
+	  	cam.setQuality (0,90);
+	  	//让videoDisplay加载摄像头
+	  	video.attachCamera(cam);
+	  }
+
+	  msgError.text="Connecting...";
 	}
 ]]>
 </mx:Script>
@@ -75,9 +100,9 @@
 <mx:VBox id="myVb" width="100%" horizontalAlign="center">
 	<mx:VideoDisplay id="video" width="400" height="300"/>
 	<mx:HBox>
-		<mx:Button label="Start Record" id="btn" click="startRecord(event);"/>
-		<mx:Button label="Stop Recording" id="stopbtn" click="stop(event);"/>
-		<mx:TextInput id="msgError"/>
+		<mx:Label id="msgError" fontWeight="bold" fontSize="13"/>
+		<mx:Button label="Start Record" id="startbtn" click="startRecord(event);"/>
+		<mx:Button label="Stop Recording" id="stopbtn" enabled="false" click="stopRecord(event);"/>
 	</mx:HBox>
 </mx:VBox>
 </mx:Application>
