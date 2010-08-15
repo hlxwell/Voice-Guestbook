@@ -16,7 +16,7 @@
 			<ul class="nice-list">
 			  <% ThreadPost.recent.all.each do |post| %>
 				<li>
-					<div class="left"><a href="#"><%= post.title %></a></div>
+					<div class="left"><%= link_to post.title, post %></div>
 					<div class="right"><%= post.updated_at.to_s(:short) %></div>
 					<div class="clearer">&nbsp;</div>
 				</li>

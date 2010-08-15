@@ -25,6 +25,16 @@
 			<div class="clearer">&nbsp;</div>
 		</div>
 
+		<div class="form-row">
+			<div class="form-property"><%= f.label :avatar %></div>
+			<div class="form-value">
+			  <%= image_tag @user.avatar.url(:thumb) %>
+			  <br>
+			  <%= f.file_field :avatar %>
+			</div>
+			<div class="clearer">&nbsp;</div>
+		</div>
+
 		<div class="form-row form-row-submit">
 		  <%= f.submit :class => "button" %>
 		</div>

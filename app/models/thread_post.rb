@@ -10,7 +10,7 @@ class ThreadPost < ActiveRecord::Base
   validates_presence_of :title, :if => Proc.new {|p| p.parent_id.blank? }
   validates_presence_of :user_id
   
-  def after_create
+  def ThreadPost.after_create
     self.parent.touch(:updated_at) if self.parent_id.present?
   end
 end

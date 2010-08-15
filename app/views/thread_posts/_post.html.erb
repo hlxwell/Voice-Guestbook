@@ -1,27 +1,35 @@
 <div class="post">
-	<div class="post-title"><h1><%= post.title %></h1></div>
-	<div class="post-date"><%= post.created_at.to_s(:db) %> by <%= post.user.login %></div>
-	<% if post.media_filename.present? %>
-	<div class="post-media">
-		<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="400" height="315">
-  		<param name="movie" value="/player/player.swf" />
-  		<param name="allowfullscreen" value="true" />
-  		<param name="allowscriptaccess" value="always" />
-  		<param name="flashvars" value="file=http://say.com:88/medias/<%= post.media_filename %>.flv&image=preview.jpg" />
-  		<embed
-  			type="application/x-shockwave-flash"
-  			id="player2"
-  			name="player2"
-  			src="/player/player.swf" 
-  			width="400" 
-  			height="315"
-  			allowscriptaccess="always" 
-  			allowfullscreen="true"
-  			flashvars="file=http://say.com:88/medias/<%= post.media_filename %>.flv&image=preview.jpg" 
-  		/>
-  	</object>
+  <div class="archive-post-date"><%= image_tag post.user.avatar.url(:thumb), :height => 40, :width => 40 %></div>
+
+	<div style="width: 550px" class="left">
+  	<div class="post-date right"><%= post.created_at.to_s(:db) %> by <%= post.user.login %></div>
+    <% if post.title.present? %>
+  	  <div class="post-title left"><h2><%= post.title %></h2></div>
+  	  <div class="clearer">&nbsp;</div>
+  	<% end %>
+
+  	<% if post.media_filename.present? %>
+  	<div class="post-media left">
+  		<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="400" height="315">
+    		<param name="movie" value="/player/player.swf" />
+    		<param name="allowfullscreen" value="true" />
+    		<param name="allowscriptaccess" value="always" />
+    		<param name="flashvars" value="file=http://say.com:88/medias/<%= post.media_filename %>.flv&image=preview.jpg" />
+    		<embed
+    			type="application/x-shockwave-flash"
+    			id="player2"
+    			name="player2"
+    			src="/player/player.swf"
+    			width="400"
+    			height="315"
+    			allowscriptaccess="always"
+    			allowfullscreen="true"
+    			flashvars="file=http://say.com:88/medias/<%= post.media_filename %>.flv&image=preview.jpg"
+    		/>
+    	</object>
+  	</div>
+  	<% end %>
+  	<div class="post-body left"><%= raw post.content %></div>
 	</div>
-	<% end %>
-	<div class="post-body"><%= raw post.content %></div>
 </div>
 <div class="archive-separator"></div>

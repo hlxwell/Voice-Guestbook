@@ -25,6 +25,7 @@ gem 'capistrano'
 # gem 'ruby-debug'
 
 gem 'paperclip'
+# gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
 
 # Bundle the extra gems:
 # gem 'bj'

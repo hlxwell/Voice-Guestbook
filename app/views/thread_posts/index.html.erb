@@ -12,7 +12,7 @@
 <% for thread_post in @thread_posts %>
 <div class="post">
 	<div class="archive-post-date">
-		<img src="/images/sample-gravatar.gif" height="40" width="40" alt="" />
+	  <%= image_tag thread_post.user.avatar.url(:thumb), :height => 40, :width => 40 %>
 	</div>
 
 	<div class="archive-post-title">
