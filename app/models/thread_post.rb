@@ -3,13 +3,17 @@ class ThreadPost < ActiveRecord::Base
 
   scope :parent_post, where(:parent_id => nil)
   scope :recent, where(:parent_id => nil).order("updated_at desc")
+  scope :by_date_desc, :order => "updated_at DESC"
+
   belongs_to :user
   belongs_to :parent, :class_name => "ThreadPost"
   has_many :children, :class_name => "ThreadPost", :foreign_key => "parent_id"
 
   validates_presence_of :title, :if => Proc.new {|p| p.parent_id.blank? }
   validates_presence_of :user_id
-  
+
+  acts_as_taggable
+
   def ThreadPost.after_create
     self.parent.touch(:updated_at) if self.parent_id.present?
   end

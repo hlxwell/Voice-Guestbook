@@ -369,6 +369,8 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 
 .post-body img.left, .post-body img.right {margin-bottom: 1em;}
 
+.post-tags { color: #ccc; padding-bottom: 10px; font-size: 1.1em;}
+
 
 /* Archives */
 .archive-pagination {
@@ -661,3 +663,8 @@ img.alignright, img.right {margin: 0 0 1em 1.5em;}
 .w200 {
   width: 200px;
 }
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }

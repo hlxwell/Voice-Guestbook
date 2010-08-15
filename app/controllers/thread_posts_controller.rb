@@ -2,8 +2,13 @@ class ThreadPostsController < ApplicationController
   before_filter :require_user, :except => [:index, :show]
 
   def index
-    # @thread_posts = ThreadPost.parent_post.all
     @thread_posts = ThreadPost.parent_post.paginate :page => params[:page], :per_page => 10
+  end
+
+  def with_tag
+    @tag_name = "with tag: <span class='quiet'>\"#{params[:id]}\"</span>"
+    @thread_posts = ThreadPost.tagged_with(params[:id]).by_date_desc.paginate :page => params[:page], :per_page => 10
+    render :file => "thread_posts/index"
   end
 
   def show
@@ -17,7 +22,9 @@ class ThreadPostsController < ApplicationController
   end
 
   def create
+    tags = params[:thread_post].delete(:tags)
     @thread_post = ThreadPost.new(params[:thread_post])
+    @thread_post.tag_list = tags
 
     if Rails.env == "development" or File.exist?("/opt/adobe/fms/applications/voice_guestbook/streams/_definst_/#{params[:voice_file_name]}.flv")
       @thread_post.media_filename = params[:voice_file_name]
@@ -46,9 +53,12 @@ class ThreadPostsController < ApplicationController
   end
 
   def destroy
+    parent = nil
     @thread_post = ThreadPost.find(params[:id])
+    parent = @thread_post.parent
     @thread_post.destroy
     flash[:notice] = "Successfully destroyed thread post."
-    redirect_to thread_posts_url
+
+    redirect_to parent.nil? ? thread_posts_url : thread_post_path(parent)
   end
 end

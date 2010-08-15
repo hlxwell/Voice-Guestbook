@@ -27,6 +27,8 @@ gem 'capistrano'
 gem 'paperclip'
 # gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
 
+gem 'acts-as-taggable-on'
+
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri', '1.4.1'

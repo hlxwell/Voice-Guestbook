@@ -2,7 +2,8 @@
   <div class="archive-post-date" style="margin-bottom: 10px"><%= image_tag post.user.avatar.url(:thumb), :height => 40, :width => 40 %></div>
 
 	<div style="width: 550px;" class="right">
-  	<div class="post-date right"><%= post.created_at.to_s(:db) %> by <%= post.user.login %></div>
+  	<div class="post-date right"><%= post.created_at.to_s(:db) %> by <%= post.user.login %> <%= post_actions(post) %></div>
+
     <% if post.title.present? %>
   	  <div class="post-title left"><h2><%= post.title %></h2></div>
   	  <div class="clearer">&nbsp;</div>
@@ -31,6 +32,16 @@
   	<div class="clearer">&nbsp;</div>
   	<% end %>
   	<div class="post-body left"><%= raw post.content %></div>
+	  <div class="clearer">&nbsp;</div>
+
+    <% if post.tags.present? %>
+  	<div class="post-tags left">
+  	  <h5 class="quiet">Tags: </h5>
+  	  <% post.tags.each do |tag| %>
+        <%= link_to tag.name, { :action => :with_tag, :id => tag.name } %>
+      <% end %>
+  	</div>
+  	<% end %>
 	</div>
 </div>
 

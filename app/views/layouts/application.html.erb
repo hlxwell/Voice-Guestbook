@@ -19,7 +19,7 @@
   <div id="header">
     <div class="navigation" id="sub-nav">
       <% semantic_navigation "network-tabs", :html => {:class => "tabbed"} do |n| %>
-        <%= n.item 'All Posts', :link => "/" %>
+        <%= n.item 'All Posts', :link => "/", :highlights_on => ["/thread_posts"] %>
         <%= n.item 'New Post', :link => "/thread_posts/new" %>
 
         <% if current_user %>

@@ -1,10 +1,14 @@
 VoiceGuestbook::Application.routes.draw do  resources :users
   resources :user_sessions
-  resources :thread_posts
+  resources :thread_posts do
+    collection do
+      get :with_tag
+    end
+  end
 
-  post "user_sessions/destroy", :as => :signout
-  get "user_sessions/new", :as => :signin
-  get "users/new", :as => :signup
+  match "signout" => "user_sessions#destroy", :as => :signout
+  match "signin" => "user_sessions#new", :as => :signin
+  match "signup" => "users#new", :as => :signup
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

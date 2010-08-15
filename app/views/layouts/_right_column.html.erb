@@ -37,6 +37,18 @@
 			</ul>
 		</div>
 	</div>
+
+	<div class="section">
+		<div class="section-title">Tags</div>
+		<div class="section-content">
+			<div class="quiet" style="padding: 0px 10px 0px 10px">
+			  <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+          <%= link_to tag.name, { :action => :with_tag, :id => tag.name }, :class => css_class %>
+        <% end %>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <div class="clearer">&nbsp;</div>
