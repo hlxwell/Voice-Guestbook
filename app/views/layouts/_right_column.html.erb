@@ -32,7 +32,7 @@
 		<div class="section-content">
 			<ul class="nice-list">
 			  <% User.limit(10).all.each do |user| %>
-				<li><%= image_tag post.user.avatar.url(:mini), :height => 10, :width => 10 %> <%= user.login %> <span class="quiet">- <%= user.created_at.to_s(:short) %></span></li>
+				<li><%= image_tag user.avatar.url(:mini), :height => 10, :width => 10 %> <%= user.login %> <span class="quiet">- <%= user.created_at.to_s(:short) %></span></li>
 				<% end %>
 			</ul>
 		</div>
