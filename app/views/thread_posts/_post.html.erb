@@ -1,7 +1,7 @@
 <div class="post">
-  <div class="archive-post-date"><%= image_tag post.user.avatar.url(:thumb), :height => 40, :width => 40 %></div>
+  <div class="archive-post-date" style="margin-bottom: 10px"><%= image_tag post.user.avatar.url(:thumb), :height => 40, :width => 40 %></div>
 
-	<div style="width: 550px" class="left">
+	<div style="width: 550px;" class="right">
   	<div class="post-date right"><%= post.created_at.to_s(:db) %> by <%= post.user.login %></div>
     <% if post.title.present? %>
   	  <div class="post-title left"><h2><%= post.title %></h2></div>
@@ -28,8 +28,10 @@
     		/>
     	</object>
   	</div>
+  	<div class="clearer">&nbsp;</div>
   	<% end %>
   	<div class="post-body left"><%= raw post.content %></div>
 	</div>
 </div>
+
 <div class="archive-separator"></div>
