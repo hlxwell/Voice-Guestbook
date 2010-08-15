@@ -22,9 +22,7 @@ class ThreadPostsController < ApplicationController
   end
 
   def create
-    tags = params[:thread_post].delete(:tags)
     @thread_post = ThreadPost.new(params[:thread_post])
-    @thread_post.tag_list = tags
 
     if Rails.env == "development" or File.exist?("/opt/adobe/fms/applications/voice_guestbook/streams/_definst_/#{params[:voice_file_name]}.flv")
       @thread_post.media_filename = params[:voice_file_name]
@@ -32,7 +30,7 @@ class ThreadPostsController < ApplicationController
 
     if @thread_post.save
       flash[:notice] = "Successfully created thread post."
-      redirect_to @thread_post.parent.nil? ? @thread_post : @thread_post.parent
+      redirect_to(@thread_post.parent||@thread_post)
     else
       render :action => 'new'
     end
@@ -46,7 +44,7 @@ class ThreadPostsController < ApplicationController
     @thread_post = ThreadPost.find(params[:id])
     if @thread_post.update_attributes(params[:thread_post])
       flash[:notice] = "Successfully updated thread post."
-      redirect_to @thread_post
+      redirect_to(@thread_post.parent||@thread_post)
     else
       render :action => 'edit'
     end

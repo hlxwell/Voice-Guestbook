@@ -1,5 +1,5 @@
 class ThreadPost < ActiveRecord::Base
-  attr_accessible :title, :content, :voice_file_path, :user_id, :parent_id, :media_filename
+  attr_accessible :title, :content, :voice_file_path, :user_id, :parent_id, :media_filename, :all_tags
 
   scope :parent_post, where(:parent_id => nil)
   scope :recent, where(:parent_id => nil).order("updated_at desc")
@@ -16,5 +16,13 @@ class ThreadPost < ActiveRecord::Base
 
   def ThreadPost.after_create
     self.parent.touch(:updated_at) if self.parent_id.present?
+  end
+
+  def all_tags
+    self.tag_list.join(",")
+  end
+
+  def all_tags=(list)
+    self.tag_list = list
   end
 end

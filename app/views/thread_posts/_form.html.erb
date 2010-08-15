@@ -12,14 +12,15 @@
 			<div class="form-value"><%= f.cktext_area(:content, :width => '530px', :height => '300px', :toolbar=>'Full', :skin => "v2") %></div>
 			<div class="clearer">&nbsp;</div>
 		</div>
-		
+
 		<div class="form-row">
-			<div class="form-property"><%= f.label :tags %></div>
-			<div class="form-value"><%= f.text_field(:tags, :class => "text") %></div>
+			<div class="form-property"><%= f.label :all_tags %></div>
+			<div class="form-value"><%= f.text_field(:all_tags, :class => "text") %></div>
 			<div class="clearer">&nbsp;</div>
 		</div>
 
-    <%= f.hidden_field :parent_id, :value => params[:reply_on] %>
+		<%= f.hidden_field :parent_id, :value => (params[:reply_on]||@thread_post.parent_id) %>
+
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
     <!-- voice_file_name -->
