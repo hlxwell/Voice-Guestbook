@@ -8,7 +8,7 @@ module ApplicationHelper
   
   def post_actions(post)
     if post.user == current_user
-      raw "| #{link_to("delete", post, :method => :delete)}"
+      raw "| #{link_to "edit", edit_thread_post_path(post)} | #{link_to("delete", post, :method => :delete)}"
     end
   end
 end

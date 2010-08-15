@@ -31,7 +31,7 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: voice_guestbook
+  database: voice_guestbook_test
   pool: 5
   username: root
   password:
