@@ -7,7 +7,7 @@ class ThreadPost < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :parent, :class_name => "ThreadPost"
-  has_many :children, :class_name => "ThreadPost", :foreign_key => "parent_id"
+  has_many :children, :class_name => "ThreadPost", :foreign_key => "parent_id", :dependent => :destroy
 
   validates_presence_of :title, :if => Proc.new {|p| p.parent_id.blank? }
   validates_presence_of :user_id
