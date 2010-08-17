@@ -1,0 +1,171 @@
+<mockup version="1.0" skin="sketch" measuredW="1021" measuredH="1323" mockupW="959" mockupH="1283">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="30" w="959" h="1283" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//saysaysay.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::LinkBar" x="708" y="127" w="-1" h="-1" measuredW="164" measuredH="23" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Home%2C%20Signup%2C%20Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="209" y="121" w="-1" h="-1" measuredW="45" measuredH="37" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Say</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::TabBar" x="208" y="191" w="669" h="213" measuredW="382" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <text>Public%20Zone%2C%20%5BTeacher%5D%20Zhang%2C%20-%5BTeacher%5D%20Wang-</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::DataGrid" x="228" y="263" w="628" h="101" measuredW="622" measuredH="101" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <rowHeight>25</rowHeight>
+        <selectedIndex>0</selectedIndex>
+        <text>Thread%20Topic%2C%20Starter%2C%20Last%20responsor%2C%20Created_at%2C%20Updated_at%0A*%28new%29*%20Did%20you%20like%20chinese%20food%3F%2C%20John%2C%20Zhang%2C%202010-09-10%2C%202010-09-11%0A*%28new%29*%20How%20many%20festivals%20there%20are%20in%20USA%3F%2C%20Zhang%2C%20John%2C%202010-09-11%2C%202010-09-13%0AHow%20to%20introduce%20yourself%3F%2C%20Zhang%2C%20Zhang%2C%202010-09-11%2C%202010-09-11</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::SearchBox" x="230" y="229" w="125" h="-1" measuredW="64" measuredH="25" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>search</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="761" y="227" w="-1" h="-1" measuredW="95" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>New%20Thread</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TitleWindow" x="209" y="416" w="668" h="850" measuredW="450" measuredH="400" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>3</bottomheight>
+        <text>Topic%3A%20Did%20you%20like%20chinese%20food%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="__group__" x="355" y="476" w="-1" h="-1" measuredW="496" measuredH="101" zOrder="8" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Tooltip" x="0" y="0" w="496" h="101" measuredW="35" measuredH="33.9" zOrder="0" locked="false" isInGroup="17">
+          <controlProperties>
+            <align>left</align>
+            <text/>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::MediaControls" x="363" y="50" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="1" locked="false" isInGroup="17"/>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::ProgressBar" x="23" y="25" w="450" h="20" measuredW="100" measuredH="20" zOrder="2" locked="false" isInGroup="17"/>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::VolumeSlider" x="276" y="60" w="-1" h="-1" measuredW="72" measuredH="16" zOrder="3" locked="false" isInGroup="17"/>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="18" controlTypeID="__group__" x="236" y="616" w="-1" h="-1" measuredW="496" measuredH="101" zOrder="11" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Tooltip" x="0" y="0" w="496" h="101" measuredW="35" measuredH="33.9" zOrder="0" locked="false" isInGroup="18">
+          <controlProperties>
+            <align>left</align>
+            <text/>
+            <tooltipDirection>NE</tooltipDirection>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::MediaControls" x="363" y="50" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="1" locked="false" isInGroup="18"/>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::ProgressBar" x="23" y="25" w="450" h="20" measuredW="100" measuredH="20" zOrder="2" locked="false" isInGroup="18"/>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::VolumeSlider" x="276" y="60" w="-1" h="-1" measuredW="72" measuredH="16" zOrder="3" locked="false" isInGroup="18"/>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="19" controlTypeID="__group__" x="745" y="592" w="-1" h="-1" measuredW="107" measuredH="106" zOrder="10" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Webcam" x="0" y="0" w="107" h="83" measuredW="177" measuredH="145" zOrder="0" locked="false" isInGroup="19"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="37" y="83" w="-1" h="-1" measuredW="42" measuredH="23" zOrder="1" locked="false" isInGroup="19">
+          <controlProperties>
+            <text>Zhang</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="20" controlTypeID="__group__" x="236" y="454" w="-1" h="-1" measuredW="111" measuredH="108" zOrder="9" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Webcam" x="0" y="0" w="111" h="86" measuredW="177" measuredH="145" zOrder="0" locked="false" isInGroup="20"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="37" y="85" w="-1" h="-1" measuredW="32" measuredH="23" zOrder="1" locked="false" isInGroup="20">
+          <controlProperties>
+            <text>John</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::FieldSet" x="236" y="721" w="496" h="221" measuredW="200" measuredH="170" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Comments</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Image" x="253" y="862" w="62" h="60" measuredW="77" measuredH="79" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>true</italic>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Image" x="324" y="862" w="62" h="60" measuredW="77" measuredH="79" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>true</italic>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Image" x="394" y="862" w="62" h="60" measuredW="77" measuredH="79" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>true</italic>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::Image" x="464" y="862" w="62" h="60" measuredW="77" measuredH="79" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>true</italic>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Paragraph" x="253" y="742" w="455" h="105" measuredW="200" measuredH="140" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <text>*New%20words%3A*%0Acontinuable%20%u53EF%u6301%u7EED%u7684%0Asustainable%20%u53EF%u4EE5%u5FCD%u53D7%u7684%0A%20%0ACheck%20out%20below%20photos%2C%20I%20recently%20took%20in%20USA.</text>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="__group__" x="355" y="970" w="496" h="246" measuredW="496" measuredH="246" zOrder="18" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Tooltip" x="0" y="0" w="496" h="246" measuredW="35" measuredH="33.9" zOrder="0" locked="false" isInGroup="29">
+          <controlProperties>
+            <align>left</align>
+            <text/>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="__group__" x="23" y="177" w="-1" h="-1" measuredW="450" measuredH="61" zOrder="1" locked="false" isInGroup="29">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::MediaControls" x="340" y="25" w="-1" h="-1" measuredW="110" measuredH="36" zOrder="0" locked="false" isInGroup="4"/>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::ProgressBar" x="0" y="0" w="450" h="20" measuredW="100" measuredH="20" zOrder="1" locked="false" isInGroup="4"/>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::VolumeSlider" x="253" y="35" w="-1" h="-1" measuredW="72" measuredH="16" zOrder="2" locked="false" isInGroup="4"/>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::Webcam" x="125" y="24" w="246" h="144" measuredW="177" measuredH="145" zOrder="2" locked="false" isInGroup="29"/>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="30" controlTypeID="__group__" x="236" y="956" w="-1" h="-1" measuredW="111" measuredH="108" zOrder="19" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Webcam" x="0" y="0" w="111" h="86" measuredW="177" measuredH="145" zOrder="0" locked="false" isInGroup="30"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="37" y="85" w="-1" h="-1" measuredW="32" measuredH="23" zOrder="1" locked="false" isInGroup="30">
+          <controlProperties>
+            <text>John</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Button" x="798" y="1223" w="-1" h="-1" measuredW="57" measuredH="28" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reply</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::ButtonBar" x="753" y="370" w="95" h="26" measuredW="96" measuredH="26" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <size>11</size>
+        <text>1%2C%202%2C%203</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
